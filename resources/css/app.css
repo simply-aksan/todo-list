@@ -1,9 +1,85 @@
 @import 'tailwindcss';
 
+@source '../../resources/views/**/*.blade.php';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ── Custom Theme Utilities ── */
+.glass-panel {
+    background: rgba(18, 18, 20, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-dark {
+    background: linear-gradient(145deg, rgba(26, 26, 30, 0.95), rgba(18, 18, 20, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
+}
+.card-dark:hover {
+    border-color: rgba(244, 63, 94, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(225, 29, 72, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 50%, #be123c 100%);
+    box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+    transition: all 0.2s cubic-bezier(.4,0,.2,1);
+}
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #e11d48 100%);
+    box-shadow: 0 6px 20px rgba(225, 29, 72, 0.5);
+    transform: translateY(-1px);
+}
+.btn-gradient:active {
+    transform: translateY(0);
+}
+
+.input-dark {
+    background-color: rgba(24, 24, 28, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f3f4f6;
+    transition: all 0.2s ease;
+}
+.input-dark:focus {
+    border-color: #f43f5e;
+    box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.2);
+    outline: none;
+}
+
+.ambient-glow {
+    position: fixed;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(225, 29, 72, 0.12) 0%, rgba(225, 29, 72, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes stripeSlide {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.stripe-anim {
+    background: linear-gradient(90deg, #f43f5e, #be123c, #fb7185, #e11d48);
+    background-size: 300% 300%;
+    animation: stripeSlide 5s ease infinite;
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.anim-fade-up {
+    animation: fadeSlideUp 0.3s cubic-bezier(.4, 0, .2, 1) both;
 }
