@@ -1,58 +1,125 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📝 Todo List Application (Laravel)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi pencatatan tugas (*To-Do List*) modern berbasis **Laravel 12**, dirancang dengan antarmuka bertema gelap (*Dark Mode*), animasi halus, serta performa ringan dan cepat.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **CRUD Tugas Lengkap**:
+  - Menambah tugas baru (*Create*).
+  - Melihat daftar tugas beserta statistik ringkas (*Read*).
+  - Melihat rincian lengkap tugas (*Show*).
+  - Mengubah judul & deskripsi tugas (*Edit & Update*).
+  - Menghapus tugas dengan konfirmasi aman (*Delete*).
+- **Quick Status Toggle**: Centang langsung tugas dari halaman utama untuk mengubah status *Selesai* / *Belum Selesai* tanpa perlu membuka form edit.
+- **Ringkasan Real-time**: Menampilkan total tugas, jumlah tugas selesai, dan tugas tertunda.
+- **Desain Modern Dark UI**:
+  - Menggunakan font *Plus Jakarta Sans / Instrument Sans*.
+  - Aksen warna crimson/rose modern dengan efek glassmorphism (`backdrop-blur`).
+  - Responsif di layar desktop maupun mobile.
+- **Performa Tinggi**:
+  - Asset dikompilasi secara lokal via Vite & Tailwind CSS v4 tanpa dependensi CDN runtime eksternal.
+  - Waktu muat halaman cepat dan tanpa lag.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🛠️ Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Backend**: [Laravel 12](https://laravel.com/) (PHP 8.4+)
+- **Database**: SQLite (dapat diganti ke MySQL / PostgreSQL jika diperlukan)
+- **Frontend / Styling**: Blade Templating & [Tailwind CSS v4](https://tailwindcss.com/)
+- **Build Tool**: [Vite](https://vite.dev/)
+- **Local Environment**: [Laravel Herd](https://herd.laravel.com/)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🚀 Panduan Instalasi Lokal
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
+### 1. Clone Repository
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/simply-aksan/todo-list.git
+cd todo-list
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Install Dependensi PHP
+```bash
+composer install
+```
 
-## Contributing
+### 3. Install Dependensi Frontend & Build Assets
+```bash
+npm install
+npm run build
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Konfigurasi Environment
+Salin file `.env.example` menjadi `.env`:
+```bash
+cp .env.example .env
+```
+*(Di Windows PowerShell: `Copy-Item .env.example .env`)*
 
-## Code of Conduct
+Lalu buat Application Key:
+```bash
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. Setup Database & Migrasi
+Pastikan file database SQLite telah ada atau jalankan migrasi langsung:
+```bash
+php artisan migrate
+```
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🌐 Menjalankan Aplikasi
 
-## License
+### Opsi A: Menggunakan Laravel Herd (Rekomendasi)
+Jika menggunakan Laravel Herd:
+1. Hubungkan direktori proyek:
+   ```bash
+   herd link
+   ```
+2. Buka di browser:
+   ```
+   http://todo-list.test
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Opsi B: Menggunakan Built-in Artisan Server
+```bash
+php artisan serve
+```
+Akses aplikasi melalui `http://127.0.0.1:8000`.
+
+---
+
+## 📁 Struktur Penting Proyek
+
+```plaintext
+todo-list/
+├── app/
+│   ├── Http/Controllers/TodoController.php  # Logika CRUD & Toggle Status
+│   └── Models/Todo.php                     # Model Todo (fillable & casting)
+├── database/
+│   └── migrations/                         # Migrasi tabel todos
+├── resources/
+│   ├── css/app.css                         # Tailwind CSS styling & tema
+│   └── views/
+│       ├── layouts/app.blade.php           # Layout utama aplikasi
+│       └── todos/                          # Halaman index, create, edit, show
+└── routes/
+    └── web.php                             # Routing aplikasi
+```
+
+---
+
+## 👨‍💻 Kontributor
+
+- **Aksan Zulkarnain** - [simply-aksan](https://github.com/simply-aksan)
+
+---
+
+## 📄 Lisensi
+
+Proyek ini bersifat open-source di bawah lisensi [MIT License](LICENSE).
